@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.7.16
-Release  : 1
+Release  : 2
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.7.16.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.7.16.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ License  : Apache-2.0 BSD-3-Clause
 Requires: oiio-bin
 Requires: oiio-lib
 Requires: oiio-data
+BuildRequires : LibRaw-dev
 BuildRequires : boost-dev
 BuildRequires : bzip2-dev
 BuildRequires : cmake
@@ -82,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1502504690
+export SOURCE_DATE_EPOCH=1502504884
 unset LD_AS_NEEDED
 mkdir clr-build
 pushd clr-build
@@ -95,7 +96,7 @@ make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1502504690
+export SOURCE_DATE_EPOCH=1502504884
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
