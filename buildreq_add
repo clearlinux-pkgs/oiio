@@ -1,0 +1,14 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+tiff-dev
+openexr-dev
+zlib-dev
+freetype-dev
+mesa-dev
+libwebp-dev
+python3-dev
+python-dev
+boost-dev
+bzip2-dev
+libjpeg-turbo-dev
+LibRaw-dev
