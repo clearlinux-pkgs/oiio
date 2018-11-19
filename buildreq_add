@@ -12,4 +12,5 @@ boost-dev
 bzip2-dev
 libjpeg-turbo-dev
 LibRaw-dev
-boost-dev
+pugixml-dev
+opencv-dev

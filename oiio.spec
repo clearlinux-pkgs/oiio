@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.16
-Release  : 5
+Release  : 6
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.16.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.16.tar.gz
 Summary  : No detailed summary available
@@ -22,13 +22,18 @@ BuildRequires : freetype-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libwebp-dev
 BuildRequires : mesa-dev
+BuildRequires : opencv-dev
 BuildRequires : openexr-dev
+BuildRequires : openssl-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(IlmBase)
 BuildRequires : pkgconfig(OpenEXR)
+BuildRequires : pkgconfig(Qt5Core)
+BuildRequires : pkgconfig(Qt5Gui)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libraw)
 BuildRequires : pkgconfig(libraw_r)
+BuildRequires : pugixml-dev
 BuildRequires : python-dev
 BuildRequires : python3
 BuildRequires : python3-dev
@@ -108,7 +113,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541151420
+export SOURCE_DATE_EPOCH=1542667714
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -116,12 +121,27 @@ export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-in
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%cmake .. -DSTOP_ON_WARNING=OFF -DILMBASE_INCLUDE_PATH=/usr/include/OpenEXR -DUSE_PYTHON=OFF
+%cmake .. -DSTOP_ON_WARNING=OFF \
+-DILMBASE_INCLUDE_PATH=/usr/include/OpenEXR \
+-DINSTALL_DOCS:BOOL=ON \
+-DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+-DCMAKE_INSTALL_MANDIR:PATH=%{_mandir}/man1 \
+-DINSTALL_FONTS:BOOL=ON \
+-DBUILDSTATIC:BOOL=OFF \
+-DLINKSTATIC:BOOL=OFF \
+-DUSE_EXTERNAL_PUGIXML:BOOL=ON \
+-DUSE_FFMPEG:BOOL=OFF \
+-DUSE_OPENSSL:BOOL=ON \
+-DCMAKE_SKIP_RPATH:BOOL=ON \
+-DUSE_OPENCV:BOOL=ON \
+-DUSE_PYTHON:BOOL=OFF \
+-DCMAKE_DL_LIBS=dl \
+-DOpenGL_GL_PREFERENCE=GLVND
 make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541151420
+export SOURCE_DATE_EPOCH=1542667714
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE
@@ -141,6 +161,7 @@ popd
 /usr/bin/idiff
 /usr/bin/igrep
 /usr/bin/iinfo
+/usr/bin/iv
 /usr/bin/maketx
 /usr/bin/oiiotool
 
@@ -186,9 +207,6 @@ popd
 /usr/include/OpenImageIO/paramlist.h
 /usr/include/OpenImageIO/platform.h
 /usr/include/OpenImageIO/plugin.h
-/usr/include/OpenImageIO/pugiconfig.hpp
-/usr/include/OpenImageIO/pugixml.cpp
-/usr/include/OpenImageIO/pugixml.hpp
 /usr/include/OpenImageIO/refcnt.h
 /usr/include/OpenImageIO/simd.h
 /usr/include/OpenImageIO/span.h
@@ -211,9 +229,7 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
-/usr/share/doc/OpenImageIO/CHANGES.md
-/usr/share/doc/OpenImageIO/LICENSE
-/usr/share/doc/OpenImageIO/openimageio.pdf
+%doc /usr/share/doc/oiio/*
 
 %files lib
 %defattr(-,root,root,-)
