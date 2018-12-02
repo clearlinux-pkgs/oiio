@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 7
+Release  : 8
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
@@ -15,6 +15,7 @@ Requires: oiio-data = %{version}-%{release}
 Requires: oiio-lib = %{version}-%{release}
 Requires: oiio-license = %{version}-%{release}
 BuildRequires : LibRaw-dev
+BuildRequires : OpenColorIO-dev
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : bzip2-dev
@@ -113,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543767142
+export SOURCE_DATE_EPOCH=1543767302
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -141,7 +142,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543767142
+export SOURCE_DATE_EPOCH=1543767302
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE

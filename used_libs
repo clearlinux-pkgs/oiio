@@ -5,6 +5,7 @@ libIex-2_2.so.23
 libIlmImf-2_2.so.23
 libIlmThread-2_2.so.23
 libImath-2_2.so.23
+libOpenColorIO.so.1
 libQt5Core.so.5
 libQt5Gui.so.5
 libQt5OpenGL.so.5
