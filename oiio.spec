@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 8
+Release  : 9
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
