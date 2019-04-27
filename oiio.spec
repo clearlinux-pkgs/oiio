@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 9
+Release  : 10
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
@@ -31,9 +31,11 @@ BuildRequires : pkgconfig(IlmBase)
 BuildRequires : pkgconfig(OpenEXR)
 BuildRequires : pkgconfig(Qt5Core)
 BuildRequires : pkgconfig(Qt5Gui)
+BuildRequires : pkgconfig(libavutil)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libraw)
 BuildRequires : pkgconfig(libraw_r)
+BuildRequires : pkgconfig(libswscale)
 BuildRequires : pugixml-dev
 BuildRequires : python-dev
 BuildRequires : python3
@@ -42,13 +44,10 @@ BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 
 %description
-This test verifies that the texture system is choosing the right mip
-levels.  It uses a special texture, miplevels.tx, that uses color codes
-for each mip level, and renders a 256x256 image where the texture
-coordinates are exactly aligned to the pixel grid.  In miplevels, the
-256x256 level is pure green, the 512x512 level is red, the 128x128 is
-blue.  So of course we expect the output of this test to be pure green
-(except for the text "256" in the center).
+======================
+[![License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat-square)](https://github.com/OpenImageIO/oiio/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/OpenImageIO/oiio.svg?branch=master)](https://travis-ci.org/OpenImageIO/oiio)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/a0l32ti7gcoergtf/branch/master?svg=true)](https://ci.appveyor.com/api/projects/status/a0l32ti7gcoergtf/branch/master)
 
 %package bin
 Summary: bin components for the oiio package.
@@ -75,6 +74,7 @@ Requires: oiio-lib = %{version}-%{release}
 Requires: oiio-bin = %{version}-%{release}
 Requires: oiio-data = %{version}-%{release}
 Provides: oiio-devel = %{version}-%{release}
+Requires: oiio = %{version}-%{release}
 
 %description dev
 dev components for the oiio package.
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543767302
+export SOURCE_DATE_EPOCH=1556387127
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -138,11 +138,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 -DUSE_PYTHON:BOOL=OFF \
 -DCMAKE_DL_LIBS=dl \
 -DOpenGL_GL_PREFERENCE=GLVND
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543767302
+export SOURCE_DATE_EPOCH=1556387127
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE
