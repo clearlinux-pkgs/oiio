@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 10
+Release  : 11
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
@@ -44,10 +44,11 @@ BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 
 %description
-======================
-[![License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat-square)](https://github.com/OpenImageIO/oiio/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/OpenImageIO/oiio.svg?branch=master)](https://travis-ci.org/OpenImageIO/oiio)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/a0l32ti7gcoergtf/branch/master?svg=true)](https://ci.appveyor.com/api/projects/status/a0l32ti7gcoergtf/branch/master)
+LICENSE
+-------
+The squish library is distributed under the terms and conditions of the MIT
+license. This license is specified at the top of each source file and must be
+preserved in its entirety.
 
 %package bin
 Summary: bin components for the oiio package.
@@ -113,15 +114,16 @@ license components for the oiio package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556387127
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568081753
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %cmake .. -DSTOP_ON_WARNING=OFF \
 -DILMBASE_INCLUDE_PATH=/usr/include/OpenEXR \
 -DINSTALL_DOCS:BOOL=ON \
@@ -138,11 +140,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 -DUSE_PYTHON:BOOL=OFF \
 -DCMAKE_DL_LIBS=dl \
 -DOpenGL_GL_PREFERENCE=GLVND
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1556387127
+export SOURCE_DATE_EPOCH=1568081753
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE
