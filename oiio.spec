@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 12
+Release  : 13
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
@@ -37,7 +37,6 @@ BuildRequires : pkgconfig(libraw)
 BuildRequires : pkgconfig(libraw_r)
 BuildRequires : pkgconfig(libswscale)
 BuildRequires : pugixml-dev
-BuildRequires : python-dev
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : tiff-dev
@@ -115,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568081753
+export SOURCE_DATE_EPOCH=1569429486
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -140,11 +139,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 -DUSE_PYTHON:BOOL=OFF \
 -DCMAKE_DL_LIBS=dl \
 -DOpenGL_GL_PREFERENCE=GLVND
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1568081753
+export SOURCE_DATE_EPOCH=1569429486
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE
