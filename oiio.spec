@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 1.8.17
-Release  : 15
+Release  : 16
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-1.8.17.tar.gz
 Summary  : No detailed summary available
@@ -108,20 +108,21 @@ license components for the oiio package.
 
 %prep
 %setup -q -n oiio-Release-1.8.17
+cd %{_builddir}/oiio-Release-1.8.17
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569429486
+export SOURCE_DATE_EPOCH=1592455619
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %cmake .. -DSTOP_ON_WARNING=OFF \
 -DILMBASE_INCLUDE_PATH=/usr/include/OpenEXR \
@@ -143,13 +144,13 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1569429486
+export SOURCE_DATE_EPOCH=1592455619
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
-cp LICENSE %{buildroot}/usr/share/package-licenses/oiio/LICENSE
-cp src/fonts/Droid_Sans/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/src_fonts_Droid_Sans_LICENSE.txt
-cp src/fonts/Droid_Sans_Mono/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/src_fonts_Droid_Sans_Mono_LICENSE.txt
-cp src/fonts/Droid_Serif/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/src_fonts_Droid_Serif_LICENSE.txt
+cp %{_builddir}/oiio-Release-1.8.17/LICENSE %{buildroot}/usr/share/package-licenses/oiio/930e9011104fc96b031b23cb5514c7be8a6b6e43
+cp %{_builddir}/oiio-Release-1.8.17/src/fonts/Droid_Sans/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/oiio-Release-1.8.17/src/fonts/Droid_Sans_Mono/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/oiio-Release-1.8.17/src/fonts/Droid_Serif/LICENSE.txt %{buildroot}/usr/share/package-licenses/oiio/2b8b815229aa8a61e483fb4ba0588b8b6c491890
 pushd clr-build
 %make_install
 popd
@@ -242,7 +243,5 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/oiio/LICENSE
-/usr/share/package-licenses/oiio/src_fonts_Droid_Sans_LICENSE.txt
-/usr/share/package-licenses/oiio/src_fonts_Droid_Sans_Mono_LICENSE.txt
-/usr/share/package-licenses/oiio/src_fonts_Droid_Serif_LICENSE.txt
+/usr/share/package-licenses/oiio/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+/usr/share/package-licenses/oiio/930e9011104fc96b031b23cb5514c7be8a6b6e43
