@@ -1,16 +1,18 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-tiff-dev
-openexr-dev
-zlib-dev
-freetype-dev
-mesa-dev
-libwebp-dev
-python3-dev
+LibRaw-dev
+OpenColorIO-dev
 boost-dev
 bzip2-dev
+fmt-dev
+freetype-dev
 libjpeg-turbo-dev
-LibRaw-dev
-pugixml-dev
+libwebp-dev
+mesa-dev
 opencv-dev
-OpenColorIO-dev
+openexr-dev
+pugixml-dev
+python3-dev
+robin-map-dev
+tiff-dev
+zlib-dev
