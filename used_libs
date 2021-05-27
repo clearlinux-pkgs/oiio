@@ -1,12 +1,10 @@
 ld-linux-x86-64.so.2
 libGL.so.1
-libHalf-2_5.so.25
-libIex-2_5.so.25
-libIexMath-2_5.so.25
-libIlmImf-2_5.so.25
-libIlmThread-2_5.so.25
-libImath-2_5.so.25
+libIex-3_0.so.28
+libIlmThread-3_0.so.28
+libImath-3_0.so.28
 libOpenColorIO.so.1
+libOpenEXR-3_0.so.28
 libQt5Core.so.5
 libQt5Gui.so.5
 libQt5OpenGL.so.5

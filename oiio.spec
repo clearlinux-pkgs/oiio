@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 2.2.14.0
-Release  : 28
+Release  : 29
 URL      : https://github.com/OpenImageIO/oiio/archive/Release-2.2.14.0/oiio-2.2.14.0.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/Release-2.2.14.0/oiio-2.2.14.0.tar.gz
 Summary  : OpenImageIO is a library for reading and writing images.
@@ -28,7 +28,6 @@ BuildRequires : mesa-dev
 BuildRequires : opencv-dev
 BuildRequires : openexr-dev
 BuildRequires : pkg-config
-BuildRequires : pkgconfig(IlmBase)
 BuildRequires : pkgconfig(OpenEXR)
 BuildRequires : pkgconfig(Qt5Core)
 BuildRequires : pkgconfig(Qt5Gui)
@@ -116,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620230877
+export SOURCE_DATE_EPOCH=1622075324
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -147,7 +146,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620230877
+export SOURCE_DATE_EPOCH=1622075324
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp %{_builddir}/oiio-Release-2.2.14.0/LICENSE.md %{buildroot}/usr/share/package-licenses/oiio/8753cb3fb20c55b0a920e1fbc7d9be770f2be3c6
