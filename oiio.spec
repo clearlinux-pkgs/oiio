@@ -4,7 +4,7 @@
 #
 Name     : oiio
 Version  : 2.3.19.0
-Release  : 40
+Release  : 41
 URL      : https://github.com/OpenImageIO/oiio/archive/v2.3.19.0/oiio-2.3.19.0.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/v2.3.19.0/oiio-2.3.19.0.tar.gz
 Summary  : OpenImageIO is a library for reading and writing images.
