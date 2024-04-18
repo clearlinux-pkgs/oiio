@@ -7,7 +7,7 @@
 #
 Name     : oiio
 Version  : 2.5.10.1
-Release  : 54
+Release  : 55
 URL      : https://github.com/OpenImageIO/oiio/archive/v2.5.10.1/oiio-2.5.10.1.tar.gz
 Source0  : https://github.com/OpenImageIO/oiio/archive/v2.5.10.1/oiio-2.5.10.1.tar.gz
 Summary  : OpenImageIO is a library for reading and writing images.
@@ -34,8 +34,8 @@ BuildRequires : mesa-dev
 BuildRequires : opencv-dev
 BuildRequires : openexr-dev
 BuildRequires : pkg-config
-BuildRequires : pkgconfig(Qt5Core)
-BuildRequires : pkgconfig(Qt5Gui)
+BuildRequires : pkgconfig(Qt6Core)
+BuildRequires : pkgconfig(Qt6Gui)
 BuildRequires : pkgconfig(libavutil)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libraw)
@@ -123,7 +123,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1713379804
+export SOURCE_DATE_EPOCH=1713466696
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -210,7 +210,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1713379804
+export SOURCE_DATE_EPOCH=1713466696
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp %{_builddir}/OpenImageIO-%{version}/LICENSE-BSD.md %{buildroot}/usr/share/package-licenses/oiio/ed2d01d8d15c106c1a00da431acc00882046f3e7 || :
