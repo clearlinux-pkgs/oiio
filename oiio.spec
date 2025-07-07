@@ -6,10 +6,10 @@
 # autospec commit: 65cf152
 #
 Name     : oiio
-Version  : 3.0.8.0
-Release  : 70
-URL      : https://github.com/OpenImageIO/oiio/archive/v3.0.8.0/oiio-3.0.8.0.tar.gz
-Source0  : https://github.com/OpenImageIO/oiio/archive/v3.0.8.0/oiio-3.0.8.0.tar.gz
+Version  : 3.0.8.1
+Release  : 71
+URL      : https://github.com/OpenImageIO/oiio/archive/v3.0.8.1/oiio-3.0.8.1.tar.gz
+Source0  : https://github.com/OpenImageIO/oiio/archive/v3.0.8.1/oiio-3.0.8.1.tar.gz
 Summary  : OpenImageIO is a library for reading and writing images.
 Group    : Development/Tools
 License  : Apache-2.0
@@ -116,10 +116,10 @@ license components for the oiio package.
 
 
 %prep
-%setup -q -n OpenImageIO-3.0.8.0
-cd %{_builddir}/OpenImageIO-3.0.8.0
+%setup -q -n OpenImageIO-3.0.8.1
+cd %{_builddir}/OpenImageIO-3.0.8.1
 pushd ..
-cp -a OpenImageIO-3.0.8.0 buildavx2
+cp -a OpenImageIO-3.0.8.1 buildavx2
 popd
 
 %build
@@ -127,7 +127,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1751416127
+export SOURCE_DATE_EPOCH=1751902286
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -216,7 +216,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1751416127
+export SOURCE_DATE_EPOCH=1751902286
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/oiio
 cp %{_builddir}/OpenImageIO-%{version}/LICENSE.md %{buildroot}/usr/share/package-licenses/oiio/7df059597099bb7dcf25d2a9aedfaf4465f72d8d || :
